@@ -34,4 +34,14 @@ RSpec.describe User, type: :model do
       expect(user.is_password?("Password")).to be true
     end
   end
+
+  describe "::find_by_credentials(username, password)" do
+    context "with valid user credentials" do
+      it "returns the correct user"
+    end
+
+    context "with invalid user credentials" do
+      it "returns nil"
+    end
+  end
 end
