@@ -37,12 +37,29 @@ RSpec.describe UsersController, type: :controller do
      end
     end
 
-    describe "GET #show" do
-        before { user.save! }
-        it "renders the show template" do
-            get :show, params: { id: user.id }
+    describe "GET #show" do  
+        context "when logged in" do
+            before do
+                post :create, params: { user: {
+                                                username: "Augustus",
+                                                password: "Password"
+                } }    
+            end
+            it "renders the show template" do
+                augustus = User.find_by(username: "Augustus")
+                get :show, params: { id: augustus.id }
 
-            expect(response).to render_template(:show)
+                expect(response).to render_template(:show)
+            end
+        end
+
+        context "when not logged in" do
+            before { user.save! }
+            it "redirects to the login page" do
+                get :show, params: { id: user.id }
+
+                expect(response).to redirect_to(new_session_url)
+            end
         end
     end
 end
