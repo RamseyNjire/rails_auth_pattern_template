@@ -12,7 +12,15 @@ RSpec.describe UsersController, type: :controller do
 
     describe "POST #create" do
      context "with valid params" do
-        it "redirects to the user show page"
+        it "redirects to the user show page" do
+            post :create, params: { user: {
+                                            username: "Augustus",
+                                            password: "Password"
+            } }
+
+            augustus = User.find_by(username: "Augustus")
+            expect(response).to redirect_to(user_url(augustus))
+        end
      end
 
      context "with invalid params" do
