@@ -21,6 +21,7 @@ RSpec.describe UsersController, type: :controller do
             augustus = User.find_by(username: "Augustus")
             expect(response).to redirect_to(user_url(augustus))
             expect(session[:session_token]).to eq(augustus.session_token)
+            expect(assigns(:current_user)).to eq(augustus)
         end
      end
 

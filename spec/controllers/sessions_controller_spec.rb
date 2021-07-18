@@ -21,6 +21,7 @@ RSpec.describe SessionsController, type: :controller do
 
                 expect(session[:session_token]).to eq(user.session_token)
                 expect(response).to redirect_to(user_url(user))
+                expect(assigns(:current_user)).to eq(user)
             end
         end
 
