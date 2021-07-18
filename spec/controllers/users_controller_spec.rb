@@ -6,7 +6,7 @@ RSpec.describe UsersController, type: :controller do
     describe "GET #new" do
         it "renders the new template" do
             get :new, params: {}
-            expect(response).to render_template("new")
+            expect(response).to render_template(:new)
         end
     end
 
@@ -29,7 +29,7 @@ RSpec.describe UsersController, type: :controller do
                                             username: "Augustus"
             } }
 
-            expect(response).to render_template("new")
+            expect(response).to render_template(:new)
             expect(flash[:errors]).to be_present
         end
      end
@@ -40,7 +40,7 @@ RSpec.describe UsersController, type: :controller do
         it "renders the show template" do
             get :show, params: { id: user.id }
 
-            expect(response).to render_template("show")
+            expect(response).to render_template(:show)
         end
     end
 end
