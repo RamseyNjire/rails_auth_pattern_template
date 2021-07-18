@@ -34,4 +34,13 @@ RSpec.describe UsersController, type: :controller do
         end
      end
     end
+
+    describe "GET #show" do
+        before { user.save! }
+        it "renders the show template" do
+            get :show, params: { id: user.id }
+
+            expect(response).to render_template("show")
+        end
+    end
 end
