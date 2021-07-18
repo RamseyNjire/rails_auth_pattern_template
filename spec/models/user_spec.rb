@@ -23,7 +23,11 @@ RSpec.describe User, type: :model do
        with_message("^Password cannot be blank")
     end
 
-    it { should validate_length_of(:password).allow_nil }
+    it do
+      should validate_length_of(:password)
+      .is_at_least(6)
+      .allow_nil
+    end
 
     it { should validate_presence_of(:session_token) }
     

@@ -49,7 +49,10 @@ RSpec.describe SessionsController, type: :controller do
         end
 
         it "logs out the user" do
+            expect(assigns(:current_user)).to receive(:reset_session_token!)
+
             delete :destroy, params: {}
+
 
             expect(response).to redirect_to(new_session_url)
             expect(session[:session_token]).to be_nil
