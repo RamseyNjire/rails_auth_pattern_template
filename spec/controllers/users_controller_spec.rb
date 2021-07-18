@@ -12,7 +12,7 @@ RSpec.describe UsersController, type: :controller do
 
     describe "POST #create" do
      context "with valid params" do
-        it "redirects to the user show page" do
+        it "logs in the user and redirects to the user show page" do
             post :create, params: { user: {
                                             username: "Augustus",
                                             password: "Password"
@@ -20,6 +20,7 @@ RSpec.describe UsersController, type: :controller do
 
             augustus = User.find_by(username: "Augustus")
             expect(response).to redirect_to(user_url(augustus))
+            expect(session[:session_token]).to eq(augustus.session_token)
         end
      end
 
