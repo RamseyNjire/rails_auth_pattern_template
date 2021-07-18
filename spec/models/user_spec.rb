@@ -24,6 +24,8 @@ RSpec.describe User, type: :model do
     end
 
     it { should validate_length_of(:password).allow_nil }
+
+    it { should validate_presence_of(:session_token) }
     
   end
 
