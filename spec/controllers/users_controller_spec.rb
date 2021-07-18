@@ -24,7 +24,14 @@ RSpec.describe UsersController, type: :controller do
      end
 
      context "with invalid params" do
-        it "validates the username and password"
+        it "validates the username and password" do
+            post :create, params: { user: {
+                                            username: "Augustus"
+            } }
+
+            expect(response).to render_template("new")
+            expect(flash[:errors]).to be_present
+        end
      end
     end
 end
