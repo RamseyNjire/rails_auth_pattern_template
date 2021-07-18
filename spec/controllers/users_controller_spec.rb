@@ -9,4 +9,14 @@ RSpec.describe UsersController, type: :controller do
             expect(response).to render_template("new")
         end
     end
+
+    describe "POST #create" do
+     context "with valid params" do
+        it "redirects to the user show page"
+     end
+
+     context "with invalid params" do
+        it "validates the username and password"
+     end
+    end
 end
