@@ -9,6 +9,13 @@
 #                           PATCH  /users/:id(.:format)                                                                     users#update
 #                           PUT    /users/:id(.:format)                                                                     users#update
 #                           DELETE /users/:id(.:format)                                                                     users#destroy
+#               new_session GET    /session/new(.:format)                                                                   sessions#new
+#              edit_session GET    /session/edit(.:format)                                                                  sessions#edit
+#                   session GET    /session(.:format)                                                                       sessions#show
+#                           PATCH  /session(.:format)                                                                       sessions#update
+#                           PUT    /session(.:format)                                                                       sessions#update
+#                           DELETE /session(.:format)                                                                       sessions#destroy
+#                           POST   /session(.:format)                                                                       sessions#create
 #        rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
 # rails_blob_representation GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
 #        rails_disk_service GET    /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
