@@ -14,4 +14,12 @@ RSpec.describe User, type: :model do
     it { should validate_length_of(:password).allow_nil }
     
   end
+
+  describe "#is_password?(password)" do
+    before { user.save! }
+
+    it "checks whether password matches user's original password" do
+      expect(user.is_password?("Password")).to be true
+    end
+  end
 end
