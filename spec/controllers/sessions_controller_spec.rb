@@ -37,4 +37,22 @@ RSpec.describe SessionsController, type: :controller do
             end
         end
     end
+
+    describe "DELETE #destroy" do
+        before do
+            user.save!
+
+            post :create, params: { user: {
+                                            username: "Caligula",
+                                            password: "Password"
+            } }
+        end
+
+        it "logs out the user" do
+            delete :destroy, params: {}
+
+            expect(response).to redirect_to(new_session_url)
+            expect(session[:session_token]).to be_nil
+        end
+    end
 end
