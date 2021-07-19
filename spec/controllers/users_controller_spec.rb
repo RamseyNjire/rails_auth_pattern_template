@@ -12,7 +12,7 @@ RSpec.describe UsersController, type: :controller do
         end
 
         context "when logged in" do
-            it "redirects to the user's show page" do
+            it "redirects to the user show page" do
                 post :create, params: { user: {
                                                 username: "Augustus",
                                                 password: "Password"

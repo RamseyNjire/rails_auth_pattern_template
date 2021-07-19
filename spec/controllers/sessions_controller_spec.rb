@@ -4,9 +4,24 @@ RSpec.describe SessionsController, type: :controller do
     subject(:user){ build(:user) }
     
     describe "GET #new" do
-        it "renders the new template" do
-            get :new, params: {}
-            expect(response).to render_template(:new)
+        context "when not logged in" do
+            it "renders the new template" do
+                get :new, params: {}
+                expect(response).to render_template(:new)
+            end
+        end
+
+        context "when logged in" do
+            before { user.save! }
+            it "redirects to the user show page" do
+                post :create, params: { user: {
+                                                username: "Caligula",
+                                                password: "Password"
+                } }
+
+                get :new, params: {}
+                expect(response).to redirect_to(user_url(user))
+            end
         end
     end
 
