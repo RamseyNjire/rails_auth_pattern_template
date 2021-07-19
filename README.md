@@ -54,6 +54,10 @@ The above is a high-level view. Feel free to peruse the user model and all three
 - Twitter: [@untakenramram](https://twitter.com/untakenramram)
 - Linkedin: [Ramsey Njire](https://www.linkedin.com/in/ramsey-njire-51984931/)
 
+## Attributions
+
+Credit for the social image goes to [FLY:D](https://unsplash.com/photos/F7aZ8G7gGBQ?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on Unsplash.
+
 
 ## 🤝 Contributing
 
