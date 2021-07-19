@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     before_action :require_current_user!, only: :show
+    # before_action :current_viewer_must_be_current_user!, only: :show
 
 
     def new
@@ -20,7 +21,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find_by(id: params[:id])
+        @user = User.find_by(id: current_user.id)
         render :show
     end
 

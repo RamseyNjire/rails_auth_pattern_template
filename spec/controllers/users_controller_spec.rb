@@ -45,7 +45,8 @@ RSpec.describe UsersController, type: :controller do
                                                 password: "Password"
                 } }    
             end
-            it "renders the show template" do
+
+            it "renders the user's show template" do
                 augustus = User.find_by(username: "Augustus")
                 get :show, params: { id: augustus.id }
 
@@ -55,10 +56,31 @@ RSpec.describe UsersController, type: :controller do
 
         context "when not logged in" do
             before { user.save! }
+
             it "redirects to the login page" do
                 get :show, params: { id: user.id }
 
                 expect(response).to redirect_to(new_session_url)
+            end
+        end
+
+        context "when viewing other user's show page" do
+            before do
+                user.save!
+                post :create, params: { user: {
+                                                username: "Augustus",
+                                                password: "Password"
+                } }  
+            end
+
+            it "renders the user's own show page" do
+                augustus = User.find_by(username: "Augustus")
+                get :show, params: { id: user.id }
+
+                expect(response).to render_template(:show)
+                expect(assigns(:current_user)).to eq(augustus)
+                expect(assigns(:user)).to eq(augustus)
+
             end
         end
     end
