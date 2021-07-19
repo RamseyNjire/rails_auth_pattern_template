@@ -1,7 +1,5 @@
 # Rails Authentication Pattern
 
-![digital_lock](./images/digital_lock.jpg)
-
 This project is a template for implementing single browser sessions in Rails.
 
 ## A Short Tour of the Rails Authentication Pattern
