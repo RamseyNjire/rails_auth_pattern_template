@@ -4,9 +4,24 @@ RSpec.describe UsersController, type: :controller do
     subject(:user) { build(:user) }
 
     describe "GET #new" do
-        it "renders the new template" do
-            get :new, params: {}
-            expect(response).to render_template(:new)
+        context "when not logged in" do
+            it "renders the new template" do
+                get :new, params: {}
+                expect(response).to render_template(:new)
+            end
+        end
+
+        context "when logged in" do
+            it "redirects to the user's show page" do
+                post :create, params: { user: {
+                                                username: "Augustus",
+                                                password: "Password"
+                } }
+
+                augustus = User.find_by(username: "Augustus")
+                get :new, params: {}
+                expect(response).to redirect_to(user_url(augustus))
+            end
         end
     end
 
