@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
     before_action :require_current_user!, only: :show
-    # before_action :current_viewer_must_be_current_user!, only: :show
 
 
     def new
