@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+    before_action :require_no_current_user!, only: :new
+
+    
     def new
         render :new
     end
